@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fonts ─────────────────────────────────────────────── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Design Tokens ──────────────────────────────────────── */
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Teal-anchored light mode */
+    --background: 0.98 0.005 220;
+    --foreground: 0.18 0.025 240;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 240;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 240;
+
+    /* Deep teal primary */
+    --primary: 0.42 0.13 210;
+    --primary-foreground: 0.98 0.005 210;
+
+    /* Warm amber accent */
+    --accent: 0.82 0.18 72;
+    --accent-foreground: 0.15 0.04 60;
+
+    --secondary: 0.92 0.018 220;
+    --secondary-foreground: 0.35 0.04 230;
+
+    --muted: 0.94 0.01 220;
+    --muted-foreground: 0.52 0.03 230;
+
+    --destructive: 0.58 0.22 27;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.88 0.02 220;
+    --input: 0.88 0.02 220;
+    --ring: 0.42 0.13 210;
+
+    --chart-1: 0.42 0.13 210;
+    --chart-2: 0.62 0.18 145;
+    --chart-3: 0.82 0.18 72;
+    --chart-4: 0.55 0.22 295;
+    --chart-5: 0.65 0.2 35;
+
+    --sidebar: 0.95 0.015 220;
+    --sidebar-foreground: 0.18 0.025 240;
+    --sidebar-primary: 0.42 0.13 210;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.92 0.018 220;
+    --sidebar-accent-foreground: 0.35 0.04 230;
+    --sidebar-border: 0.88 0.02 220;
+    --sidebar-ring: 0.42 0.13 210;
+
+    /* Category colors */
+    --cat-notes: 0.52 0.18 210;
+    --cat-websites: 0.5 0.2 155;
+    --cat-practice: 0.7 0.18 50;
+    --cat-courses: 0.52 0.22 295;
+  }
+
+  .dark {
+    --background: 0.13 0.02 240;
+    --foreground: 0.94 0.01 220;
+
+    --card: 0.18 0.025 240;
+    --card-foreground: 0.94 0.01 220;
+
+    --popover: 0.22 0.025 240;
+    --popover-foreground: 0.94 0.01 220;
+
+    /* Lighter teal in dark */
+    --primary: 0.65 0.15 210;
+    --primary-foreground: 0.1 0.02 240;
+
+    /* Amber accent */
+    --accent: 0.78 0.16 72;
+    --accent-foreground: 0.1 0.02 60;
+
+    --secondary: 0.25 0.03 240;
+    --secondary-foreground: 0.85 0.02 220;
+
+    --muted: 0.22 0.025 240;
+    --muted-foreground: 0.6 0.025 230;
+
+    --destructive: 0.65 0.22 27;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.28 0.03 240;
+    --input: 0.28 0.03 240;
+    --ring: 0.65 0.15 210;
+
+    --chart-1: 0.65 0.15 210;
+    --chart-2: 0.65 0.18 145;
+    --chart-3: 0.78 0.16 72;
+    --chart-4: 0.62 0.22 295;
+    --chart-5: 0.72 0.2 35;
+
+    --sidebar: 0.18 0.025 240;
+    --sidebar-foreground: 0.94 0.01 220;
+    --sidebar-primary: 0.65 0.15 210;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.25 0.03 240;
+    --sidebar-accent-foreground: 0.85 0.02 220;
+    --sidebar-border: 0.28 0.03 240;
+    --sidebar-ring: 0.65 0.15 210;
+
+    /* Category colors - brighter for dark mode */
+    --cat-notes: 0.65 0.18 210;
+    --cat-websites: 0.65 0.2 155;
+    --cat-practice: 0.78 0.18 50;
+    --cat-courses: 0.65 0.22 295;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "General Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  code, pre, kbd {
+    font-family: "JetBrains Mono", monospace;
+  }
+}
+
+/* ── Utility Classes ────────────────────────────────────── */
+@layer utilities {
+  .category-notes {
+    color: oklch(var(--cat-notes));
+    background-color: oklch(var(--cat-notes) / 0.1);
+    border-color: oklch(var(--cat-notes) / 0.2);
+  }
+  .category-websites {
+    color: oklch(var(--cat-websites));
+    background-color: oklch(var(--cat-websites) / 0.1);
+    border-color: oklch(var(--cat-websites) / 0.2);
+  }
+  .category-practice {
+    color: oklch(var(--cat-practice));
+    background-color: oklch(var(--cat-practice) / 0.1);
+    border-color: oklch(var(--cat-practice) / 0.2);
+  }
+  .category-courses {
+    color: oklch(var(--cat-courses));
+    background-color: oklch(var(--cat-courses) / 0.1);
+    border-color: oklch(var(--cat-courses) / 0.2);
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(oklch(var(--primary) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(var(--primary) / 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px oklch(var(--foreground) / 0.08), 0 2px 8px oklch(var(--foreground) / 0.04);
+  }
+}
